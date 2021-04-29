@@ -10,9 +10,9 @@ class User {
       const user = await userService.create({ username, password });
       user.password = undefined;
       return res.json({ message: "Usuário criado com sucesso!", user });
-    } catch (err) {
-      console.error(err);
-      return res.status(400).json(err);
+    } catch ({ error }) {
+      console.error(error);
+      return res.status(400).json(error);
     }
   }
 }
