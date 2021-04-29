@@ -2,9 +2,9 @@ import { Document, model, Schema, Model } from "mongoose";
 import bcryptjs from "bcryptjs";
 import { IUser } from "../interfaces";
 
-export interface UserModelInterface extends IUser, Document {}
+interface IUserModel extends IUser, Document {}
 
-const UserSchema: Schema<UserModelInterface> = new Schema({
+const UserSchema: Schema<IUserModel> = new Schema({
   username: {
     required: true,
     unique: true,
@@ -27,6 +27,6 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
-const User: Model<UserModelInterface> = model("User", UserSchema);
+const User: Model<IUserModel> = model("User", UserSchema);
 
-export { User };
+export { User, IUserModel };

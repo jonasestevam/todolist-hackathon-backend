@@ -1,3 +1,5 @@
+import { Request } from "express";
+
 export interface IUser {
   username: string;
   password: string;
@@ -5,5 +7,12 @@ export interface IUser {
 
 export interface IAppError {
   message: string;
-  error: string;
+  error?: string;
+}
+
+export interface IExtendedRequest extends Request{
+  attemptedLoginInfo?: {
+    username: string;
+    password: string;
+  };
 }
