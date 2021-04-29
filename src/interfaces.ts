@@ -10,9 +10,16 @@ export interface IAppError {
   error?: string;
 }
 
-export interface IExtendedRequest extends Request{
+export interface IExtendedRequest extends Request {
   attemptedLoginInfo?: {
     username: string;
     password: string;
   };
+  user?: any;
+}
+
+export interface ITask {
+  title: string;
+  completed?: boolean;
+  username: string;
 }

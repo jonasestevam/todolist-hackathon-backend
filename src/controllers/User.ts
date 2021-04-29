@@ -4,7 +4,7 @@ import { UserService } from "../services/User";
 import { CheckPassword } from "../utils/CheckPassword";
 import { JWTGenerator } from "../utils/JWTGenerator";
 
-class User {
+class UserController {
   async create(req: Request, res: Response) {
     const { username, password } = req.body;
 
@@ -57,4 +57,4 @@ class User {
     }
   }
 }
-export { User };
+export { UserController };

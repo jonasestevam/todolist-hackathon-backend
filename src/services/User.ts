@@ -24,7 +24,7 @@ class UserService {
         ? await User.findOne({ username }).select("+password")
         : await User.findOne({ username });
     } catch (err) {
-      this.throwError(`Erro ao consultar usuário ${username}`, err);
+      this.throwError(`Erro ao consultar usuário ${username}`, err.message);
     }
   }
 }
