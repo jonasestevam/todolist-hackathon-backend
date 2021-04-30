@@ -1,6 +1,7 @@
 import { AppError } from "../errors/AppError";
 import { IUser } from "../interfaces";
 import { User } from "../models/User";
+
 class UserService {
   private throwError(message: string, err?: any) {
     console.error(message, err);

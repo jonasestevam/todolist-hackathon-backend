@@ -28,4 +28,6 @@ routes.post(
   taskController.create
 );
 
+routes.put("/task/:id", userAuthentication.execute, taskController.update);
+
 export { routes };
