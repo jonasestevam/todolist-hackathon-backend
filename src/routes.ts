@@ -18,6 +18,8 @@ const taskValidator = new TaskValidator();
 
 const routes = express.Router();
 
+routes.get("/me", userAuthentication.execute, userController.getUserInfo);
+
 routes.post("/user", userValidator.execute, userController.create);
 routes.get("/auth", basicAuthHeaderValidator.execute, userController.login);
 

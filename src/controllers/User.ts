@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { IExtendedRequest } from "../interfaces";
+import { TaskService } from "../services/Task";
 import { UserService } from "../services/User";
 import { CheckPassword } from "../utils/CheckPassword";
 import { JWTGenerator } from "../utils/JWTGenerator";
@@ -23,6 +24,21 @@ class UserController {
     } catch ({ error }) {
       console.error(error);
       return res.status(400).json(error);
+    }
+  }
+  async getUserInfo(req: IExtendedRequest, res: Response) {
+    const userService = new UserService();
+    const taskService = new TaskService();
+
+    const { username } = req.user;
+
+    try {
+      const user = await userService.getByUsername(username);
+      const tasks = await taskService.getAllFromUser(username);
+      return res.json({ user, tasks });
+    } catch (err) {
+      console.error(err);
+      return res.status(400).json(err);
     }
   }
   async login(req: IExtendedRequest, res: Response) {
